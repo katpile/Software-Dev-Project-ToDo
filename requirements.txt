@@ -1,0 +1,8 @@
+Flask>=2.2
+Flask-Migrate==3.0.1
+Flask-RESTx>=1.0.0,<2.0.0 
+SQLAlchemy==1.4.25
+Werkzeug>=3.0.0,<4.0.0
+
+
+
