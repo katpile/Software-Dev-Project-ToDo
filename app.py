@@ -10,7 +10,7 @@ migrate = Migrate(app, db)
 
 api = Api(app, version='1.0', title='Todo API', description='A simple Todo API')
 
-# Define Task model
+# Task model
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -21,15 +21,12 @@ class Task(db.Model):
 # Define namespaces
 task_ns = api.namespace('tasks', description='Task operations')
 
-# Define models using api.model decorator if needed
-
 @app.route('/')
 def index():
     return 'Hello, this is your Flask API!'
 
 @task_ns.route('/')
 class TaskResource(Resource):
-    # Define the model using api.model decorator if needed
     def post(self):
         """Create a new task"""
         data = request.get_json()
@@ -40,7 +37,6 @@ class TaskResource(Resource):
 
 @task_ns.route('/<int:task_id>')
 class TaskUpdateResource(Resource):
-    # Define the model using api.model decorator if needed
     def put(self, task_id):
         """Update task status"""
         task = Task.query.get(task_id)
